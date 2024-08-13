@@ -38,7 +38,7 @@ export class RegisterComponent {
       .subscribe({
         next: (res:RegisterResponse) => {
           console.log(`user ${res.email} succesful register`);
-         this.router.navigateByUrl('/login');
+        //  this.router.navigateByUrl('/login');
         },
         error: (err) => console.log(err.error.message)
       });
