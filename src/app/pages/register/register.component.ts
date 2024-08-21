@@ -9,7 +9,7 @@ import { RegisterResponse } from '../../models/reqister-response';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule,],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
