@@ -1,8 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { StoreService } from '../../services/store.service';
 import { RegisterResponse } from '../../models/reqister-response';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,22 +14,15 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HomeComponent implements OnInit{
 
-  message = 'Hello';
 
   storeService: StoreService = inject(StoreService);
   authService: AuthService = inject(AuthService);
+  router: Router = inject(Router);
 
   ngOnInit(): void {
-    this.storeService.getUser().subscribe({
-      next: (response: RegisterResponse) => {
-        
-        this.message = `Hello ${response.email}`
-      },
-      error: (err) => {
-        this.message = `${err.error.message}`
-      }
-    })
-
+    this.storeService.getUser()
   }
 
+  
 }
+

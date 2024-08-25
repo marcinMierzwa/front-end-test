@@ -31,7 +31,7 @@ login(loginRequest: LoginRequest): Observable<LoginResponse> {
 
 // #logout
 logout(): Observable<LogoutResponse> {
-  return this.http.post<LogoutResponse>(`${enviorment.api}auth/logout`, {})
+  return this.http.post<LogoutResponse>(`${enviorment.api}auth/logout`, {}, {withCredentials: true})
 }
 
 // #refresh

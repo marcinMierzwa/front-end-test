@@ -35,7 +35,6 @@ export class LoginComponent {
       .subscribe({
         next: (res:LoginResponse) => {
         this.authService.accessToken.set(res.accessToken);
-        this.authService.isLoggedIn.set(true);
          this.router.navigateByUrl('/home');
         },
         error: (err) => console.log(err.error.message)

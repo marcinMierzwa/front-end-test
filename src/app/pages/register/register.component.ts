@@ -15,7 +15,7 @@ import { RegisterResponse } from '../../models/reqister-response';
 })
 export class RegisterComponent {
 
-  router:Router = inject(Router)
+  router:Router = inject(Router);
 
   authService: AuthService = inject(AuthService);
 
@@ -37,8 +37,8 @@ export class RegisterComponent {
       .register(registerFormData)
       .subscribe({
         next: (res:RegisterResponse) => {
-          console.log(`user ${res.email} succesful register`);
-        //  this.router.navigateByUrl('/login');
+        alert(res.message);
+        this.router.navigate(['/home']);
         },
         error: (err) => console.log(err.error.message)
       });
