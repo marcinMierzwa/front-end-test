@@ -2,7 +2,7 @@
 
     <header class="px-3 ">
         <app-navbar />
-        <div [className]= "registerResponse().message ? 'alertBoxCenter': 'alertBoxLeft'">
+        <div [className]= "isRegisterAlertVisible() ? 'alertBoxCenter': 'alertBoxLeft'">
             <app-alert />
         </div>
 
@@ -12,12 +12,13 @@
 
 
 </main>
-<button 
+<!-- <button 
 class="cursor-pointer mt-36"
 (click)="moveDiv()"
 >moveDiv</button>
 
-</div>
+</div> -->
 
-<!-- [className]= "isCenter ? 'boxCenter': 'boxLeft'" -->
 
+
+<!-- [className]= "registerResponse().message ? 'alertBoxCenter': 'alertBoxLeft'" -->

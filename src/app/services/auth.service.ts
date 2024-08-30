@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { RegisterResponse } from '../models/reqister-response';
 import { enviorment } from '../enviorments/enviorments.dev';
 import { RegisterRequest } from '../models/register-request';
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+
 http: HttpClient = inject(HttpClient);
 
 router: Router = inject(Router);
@@ -21,6 +22,8 @@ router: Router = inject(Router);
 accessToken = signal<string>('');
 
 isLoggedIn = signal<boolean>(false);
+
+isRegisterAlertVisible = signal<boolean>(false);
 
 registrationResponse = signal<RegisterResponse>({
   message: '',
@@ -48,6 +51,16 @@ logout(): Observable<LogoutResponse> {
 // #refresh
 refresh(): Observable<LoginResponse> {
   return this.http.post<LoginResponse>(`${enviorment.api}auth/refresh`, {}, {withCredentials: true})
+}
+
+moveRegisterAlert() {
+  setTimeout(() => {
+    this.isRegisterAlertVisible.set(true);
+  },2000)
+  setTimeout(() => {
+    this.isRegisterAlertVisible.set(false);
+  },15000)
+
 }
 
 }

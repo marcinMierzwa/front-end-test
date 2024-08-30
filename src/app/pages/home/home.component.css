@@ -2,8 +2,8 @@ div.alertBoxLeft {
     width: 75%;
     position: fixed;
     left: 50%;
-    transform: translateX(-150%);
-    transition: linear all 1s;
+    transform: translateX(-200%);
+    transition: linear all 0.4s;
 
 }
 
@@ -12,6 +12,6 @@ div.alertBoxCenter {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    transition: linear all 1s;
+    transition: linear all 0.4s;
 
 }

@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { RegisterRequest } from '../../models/register-request';
 import { RegisterResponse } from '../../models/reqister-response';
 import { AlertComponent } from "../../components/alert/alert.component";
+import { interval, take } from 'rxjs';
 
 
 @Component({
@@ -38,12 +39,12 @@ export class RegisterComponent implements OnInit {
   submit(): void {
     const registerFormData: RegisterRequest = this.registerForm.getRawValue();
     this.authService.register(registerFormData)
-      .subscribe({
+      .subscribe(
+        {
         next: (response: RegisterResponse) => {
-        this.authService.registrationResponse.set(response); 
-        console.log(this.authService.registrationResponse());
-         
-        this.router.navigate(['/home']);
+          this.router.navigate(['/home']);
+          this.authService.registrationResponse.set(response);  
+          this.authService.moveRegisterAlert();        
         },
         error: (err) => console.log(err.error.message)
       });
