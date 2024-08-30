@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AlertComponent } from './components/alert/alert.component';
 
 export const routes: Routes = [
     {
@@ -28,6 +29,12 @@ export const routes: Routes = [
           (component) => component.LoginComponent
         ),
     },
+    {
+      path: 'alert',
+      title: 'alert',
+      component: AlertComponent
+    },
+
     { path: '**', redirectTo: 'home'}
   ];
   
