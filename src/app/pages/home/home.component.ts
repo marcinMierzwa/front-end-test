@@ -5,6 +5,7 @@ import { RegisterResponse } from '../../models/reqister-response';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { AlertComponent } from "../../components/alert/alert.component";
+import { CommonModule, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -22,10 +23,14 @@ export class HomeComponent implements OnInit{
 
   registerResponse: Signal<RegisterResponse> = this.authService.registrationResponse;
   
-
+  isCenter = true;
 
   ngOnInit(): void {
     this.storeService.getUser()
+  }
+
+  moveDiv(): void {
+    this.isCenter = !this.isCenter
   }
 
   
