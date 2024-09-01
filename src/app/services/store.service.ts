@@ -16,7 +16,8 @@ export class StoreService {
 
   user = signal<User>({
     email: '',
-    id: ''
+    id: '',
+    isEmailAdressConfirmed: false
   });
 
 

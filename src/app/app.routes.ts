@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { AlertComponent } from './components/alert/alert.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AlertLoginComponent } from './components/alert-login/alert-login.component';
 
 export const routes: Routes = [
     {
@@ -24,15 +25,11 @@ export const routes: Routes = [
     {
       path: 'login',
       title: 'login',
-      loadComponent: () =>
-        import('./pages/login/login.component').then(
-          (component) => component.LoginComponent
-        ),
+        component: LoginComponent,
     },
     {
-      path: 'alert',
-      title: 'alert',
-      component: AlertComponent
+      path: 'alert-login',
+      component: AlertLoginComponent
     },
 
     { path: '**', redirectTo: 'home'}

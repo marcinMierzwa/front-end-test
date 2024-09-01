@@ -4,11 +4,12 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { LoginRequest } from '../../models/login-request';
 import { LoginResponse } from '../../models/login-response';
+import { AlertLoginComponent } from "../../components/alert-login/alert-login.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, AlertLoginComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

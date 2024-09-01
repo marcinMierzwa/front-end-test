@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { effect, inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { RegisterResponse } from '../models/reqister-response';
 import { enviorment } from '../enviorments/enviorments.dev';
 import { RegisterRequest } from '../models/register-request';
@@ -8,6 +8,7 @@ import { LoginRequest } from '../models/login-request';
 import { LoginResponse } from '../models/login-response';
 import { LogoutResponse } from '../models/logout-response';
 import { Router } from '@angular/router';
+import { EmailConfirmation } from '../models/email-confirmartion';
 
 @Injectable({
   providedIn: 'root'
@@ -53,10 +54,15 @@ refresh(): Observable<LoginResponse> {
   return this.http.post<LoginResponse>(`${enviorment.api}auth/refresh`, {}, {withCredentials: true})
 }
 
+// // #check email confirmation adress
+// checkEmailConfiramtion(): Observable<EmailConfirmation> {
+//   return this.http.get<EmailConfirmation>(`${enviorment.api}/mail)
+// }
+
 moveRegisterAlert() {
   setTimeout(() => {
     this.isRegisterAlertVisible.set(true);
-  },2000)
+  },2500)
   setTimeout(() => {
     this.isRegisterAlertVisible.set(false);
   },15000)
