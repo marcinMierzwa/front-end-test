@@ -32,6 +32,12 @@ registrationResponse = signal<RegisterResponse>({
   _id: ''
 });
 
+loginResponse = signal<LoginResponse>({
+  accessToken: '',
+  message: ''
+});
+
+
 
 // #register
 register(registerRequest: RegisterRequest): Observable<RegisterResponse> {
