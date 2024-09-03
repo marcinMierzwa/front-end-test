@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { AlertLoginComponent } from './components/alert-login/alert-login.component';
 
 export const routes: Routes = [
     {
@@ -27,11 +26,6 @@ export const routes: Routes = [
       title: 'login',
         component: LoginComponent,
     },
-    {
-      path: 'alert-login',
-      component: AlertLoginComponent
-    },
-
     { path: '**', redirectTo: 'home'}
   ];
   

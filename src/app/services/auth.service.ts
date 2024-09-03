@@ -26,17 +26,16 @@ isLoggedIn = signal<boolean>(false);
 
 isRegisterAlertVisible = signal<boolean>(false);
 
+isLoginAlertVisible = signal<boolean>(false);
+
 registrationResponse = signal<RegisterResponse>({
   message: '',
   email: '',
   _id: ''
 });
 
-loginResponse = signal<LoginResponse>({
-  accessToken: '',
-  message: ''
-});
-
+loginAlertMessageError = signal<string>('');
+loginAlertMessageSuccess = signal<string>('');
 
 
 // #register

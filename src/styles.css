@@ -2,3 +2,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+div.alertBoxLeft {
+    width: 75%;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-200%);
+    transition: linear all 0.4s;
+    z-index: 1000;
+
+}
+
+div.alertBoxCenter {
+    width: 75%;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: linear all 0.4s;
+    z-index: 1000;
+}

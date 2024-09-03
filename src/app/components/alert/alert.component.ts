@@ -15,8 +15,9 @@ export class AlertComponent implements OnInit {
 
   private readonly authService: AuthService = inject(AuthService);
 
-  registerResponse: Signal<RegisterResponse> = this.authService.registrationResponse;
-  
+  registerAlertMessage: Signal<RegisterResponse> = this.authService.registrationResponse;
+  loginAlertMessageSuccess: Signal<string> = this.authService.loginAlertMessageSuccess;
+  loginAlertMessageError: Signal<string> = this.authService.loginAlertMessageError;
 
   ngOnInit(): void {
     initFlowbite();

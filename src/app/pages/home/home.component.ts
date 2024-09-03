@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, Signal, signal } from '@angular/core';
+import { Component, inject, OnInit, Signal } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { StoreService } from '../../services/store.service';
 import { AuthService } from '../../services/auth.service';
@@ -15,8 +15,8 @@ export class HomeComponent implements OnInit {
   private readonly storeService: StoreService = inject(StoreService);
   private readonly authService: AuthService = inject(AuthService);
 
-  isRegisterAlertVisible: Signal<boolean> = this.authService.isRegisterAlertVisible
-
+  isRegisterAlertVisible: Signal<boolean> = this.authService.isRegisterAlertVisible;
+  isLoginAlertVisible: Signal<boolean> = this.authService.isLoginAlertVisible;
 
   ngOnInit(): void {
     this.storeService.getUser();

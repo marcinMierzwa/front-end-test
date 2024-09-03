@@ -18,6 +18,9 @@
       <div class="mx-auto max-w-lg text-center">
         <h1 class="text-2xl font-bold sm:text-3xl">Log in!</h1>
     
+        <div [className]= "isLoginAlertVisible() ? 'alertBoxCenter': 'alertBoxLeft'">
+          <app-alert />
+      
       </div>
     
       <form 
