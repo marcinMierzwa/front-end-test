@@ -13,6 +13,7 @@ import { NgClass } from '@angular/common';
 })
 export class AlertComponent implements OnInit {
 
+
   private readonly authService: AuthService = inject(AuthService);
 
   registerAlertMessage: Signal<RegisterResponse> = this.authService.registrationResponse;
@@ -22,6 +23,10 @@ export class AlertComponent implements OnInit {
   ngOnInit(): void {
     initFlowbite();
   }
+
+  closeAlert() {
+    this.authService.isLoginAlertVisible.set(false);
+  }  
 
 
 }

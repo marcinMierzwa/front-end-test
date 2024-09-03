@@ -4,12 +4,12 @@ import {
   input,
   OnInit,
   Signal,
-  signal,
 } from '@angular/core';
 import { initFlowbite } from 'flowbite';
 import { AuthService } from '../../../services/auth.service';
 import { StoreService } from '../../../services/store.service';
 import { User } from '../../../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -21,6 +21,7 @@ import { User } from '../../../models/user';
 export class AdminComponent implements OnInit {
   private authService: AuthService = inject(AuthService);
   private storeService: StoreService = inject(StoreService);
+  private readonly router: Router = inject(Router);
   user: Signal<User> = this.storeService.user;
 
   ngOnInit(): void {
@@ -28,7 +29,10 @@ export class AdminComponent implements OnInit {
   }
 
   logout(): void {
-    this.authService.logout().subscribe();
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['/home']);
+      this.authService.isLoginAlertVisible.set(false);
+    });
     this.authService.isLoggedIn.set(false);
   }
 }

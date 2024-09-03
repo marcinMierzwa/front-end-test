@@ -5,11 +5,13 @@ import { AuthService } from '../../services/auth.service';
 import { LoginRequest } from '../../models/login-request';
 import { LoginResponse } from '../../models/login-response';
 import { AlertComponent } from "../../components/alert/alert.component";
+import { NgClass } from '@angular/common';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, AlertComponent],
+  imports: [RouterLink, ReactiveFormsModule, AlertComponent, NgClass],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -32,6 +34,11 @@ export class LoginComponent {
 
   });
 
+  ngOnInit(): void {
+    initFlowbite();
+  }
+    
+
   submit(): void {
     const loginFormData: LoginRequest = this.loginForm.getRawValue();
     this.authService
@@ -44,7 +51,7 @@ export class LoginComponent {
         this.router.navigateByUrl('/home');
         },
         error: (err) => {
-          console.log(err.error.message)
+          console.log(err)
           this.authService.isLoginAlertVisible.set(true);
           this.authService.loginAlertMessageError.set(err.error.message);
         
