@@ -28,12 +28,9 @@ isRegisterAlertVisible = signal<boolean>(false);
 
 isLoginAlertVisible = signal<boolean>(false);
 
-registrationResponse = signal<RegisterResponse>({
-  message: '',
-  email: '',
-  _id: ''
-});
 
+registerAlertMessageError = signal<string>('');
+registerAlertMessageSuccess = signal<string>('');
 loginAlertMessageError = signal<string>('');
 loginAlertMessageSuccess = signal<string>('');
 
