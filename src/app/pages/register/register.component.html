@@ -26,6 +26,7 @@
     [formGroup]="registerForm"
     (ngSubmit)="submit()"
     class="mx-auto mb-8 mt-8 max-w-md space-y-4">
+    =={{ registerForm.controls.email.errors | json }}==
       <div>
         <label for="email" class="sr-only">Email</label>
   
@@ -36,7 +37,20 @@
             class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
             placeholder="email"
           />
-  
+          <!-- @if (
+            registerForm.controls.email.invalid && (registerForm.controls.email.touched || registerForm.controls.email.dirty)
+          ) {
+            @if (registerForm.controls.email.errors?.['required']) {
+              <small>*Email is a required field</small>
+            }
+            @if (registerForm.controls.email.errors?.['email']) {
+              <small>*Email must be an email</small>
+            }
+
+          } -->
+          @if (true) {
+            <small>*Email must be an email</small>
+          }
           <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +164,7 @@
         </button>
       </div>
     </form>
-    @if (this.authService.registerAlertMessageError()) {
+    <!-- @if (this.authService.registerAlertMessageError()) {
 
       <div class="w-2/3 mx-auto">
         <div
@@ -178,7 +192,11 @@
     </div>
     
       
-     }
+     } -->
     
   </div>
+
+
+  <!-- [class.invalid]="registerForm.controls.email.invalid" -->
+
 

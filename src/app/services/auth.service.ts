@@ -68,7 +68,7 @@ moveRegisterAlert() {
   setTimeout(() => {
     this.isRegisterAlertVisible.set(false);
   },15000)
-
 }
+
 
 }
