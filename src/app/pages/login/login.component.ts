@@ -46,9 +46,11 @@ export class LoginComponent {
       .subscribe({
         next: (res:LoginResponse) => {
         this.authService.accessToken.set(res.accessToken);
+        this.router.navigateByUrl('/home');
         this.authService.isLoginAlertVisible.set(true);
         this.authService.loginAlertMessageSuccess.set(res.message);
-        this.router.navigateByUrl('/home');
+        this.authService.moveLoginAlert();
+
         },
         error: (err) => {
           console.log(err)

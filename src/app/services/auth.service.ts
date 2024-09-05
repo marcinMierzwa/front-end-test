@@ -8,7 +8,6 @@ import { LoginRequest } from '../models/login-request';
 import { LoginResponse } from '../models/login-response';
 import { LogoutResponse } from '../models/logout-response';
 import { Router } from '@angular/router';
-import { EmailConfirmation } from '../models/email-confirmartion';
 
 @Injectable({
   providedIn: 'root'
@@ -64,11 +63,21 @@ refresh(): Observable<LoginResponse> {
 moveRegisterAlert() {
   setTimeout(() => {
     this.isRegisterAlertVisible.set(true);
-  },2500)
+  },2000)
   setTimeout(() => {
     this.isRegisterAlertVisible.set(false);
   },15000)
 }
+
+moveLoginAlert() {
+  setTimeout(() => {
+    this.isLoginAlertVisible.set(true);
+  },2000)
+  setTimeout(() => {
+    this.isLoginAlertVisible.set(false);
+  },5000)
+}
+
 
 
 }
