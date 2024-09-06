@@ -55,6 +55,10 @@ refresh(): Observable<LoginResponse> {
   return this.http.post<LoginResponse>(`${enviorment.api}auth/refresh`, {}, {withCredentials: true})
 }
 
+getEmailToken() {
+  return this.http.get('http://localhost:3000/mail')
+}
+
 // // #check email confirmation adress
 // checkEmailConfiramtion(): Observable<EmailConfirmation> {
 //   return this.http.get<EmailConfirmation>(`${enviorment.api}/mail)

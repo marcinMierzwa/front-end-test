@@ -20,6 +20,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.storeService.getUser();
+    this.authService.getEmailToken().subscribe(
+      (res)=> console.log(res)
+      
+    )
   }
 
 }
