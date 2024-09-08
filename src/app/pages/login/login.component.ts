@@ -55,10 +55,18 @@ export class LoginComponent {
         error: (err) => {
           console.log(err)
           this.authService.isLoginAlertVisible.set(true);
-          this.authService.loginAlertMessageError.set(err.error.message);
+          this.authService.loginAlertError.set(err.error);
         
         }
       });
+  }
+
+  resendConfirmationEmail(): void{
+    const email = this.loginForm.value.email;
+    this.authService.resendConfirmationEmail(this.loginForm.value.email).subscribe(
+      response => console.log(response)
+      
+    );
   }
 
 }

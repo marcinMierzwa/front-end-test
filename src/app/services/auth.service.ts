@@ -8,6 +8,8 @@ import { LoginRequest } from '../models/login-request';
 import { LoginResponse } from '../models/login-response';
 import { LogoutResponse } from '../models/logout-response';
 import { Router } from '@angular/router';
+import { loginAlertError } from '../models/login-alert-error';
+import { ResendConfirmationEmail } from '../models/resend-confirmation-email';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +32,11 @@ isLoginAlertVisible = signal<boolean>(false);
 
 registerAlertMessageError = signal<string>('');
 registerAlertMessageSuccess = signal<string>('');
-loginAlertMessageError = signal<string>('');
+loginAlertError = signal<loginAlertError>({
+  statusCode: '',
+  error: '',
+  message: ''
+});
 loginAlertMessageSuccess = signal<string>('');
 
 
@@ -53,6 +59,11 @@ logout(): Observable<LogoutResponse> {
 // #refresh
 refresh(): Observable<LoginResponse> {
   return this.http.post<LoginResponse>(`${enviorment.api}auth/refresh`, {}, {withCredentials: true})
+}
+
+// #resend confirmation email
+resendConfirmationEmail(email?: string): Observable<ResendConfirmationEmail> {
+  return this.http.post<ResendConfirmationEmail>(`${enviorment.api}mail/resend-confirmation-email`, {email});
 }
 
 
