@@ -23,6 +23,8 @@ router: Router = inject(Router);
 
 accessToken = signal<string>('');
 
+emailConfirmationToken = signal<string>('');
+
 isLoggedIn = signal<boolean>(false);
 
 isRegisterAlertVisible = signal<boolean>(false);
@@ -80,7 +82,7 @@ moveRegisterAlert() {
   },2000)
   setTimeout(() => {
     this.isRegisterAlertVisible.set(false);
-  },1500)
+  },10000)
 }
 
 moveLoginAlert() {

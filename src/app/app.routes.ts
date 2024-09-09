@@ -28,7 +28,7 @@ export const routes: Routes = [
         component: LoginComponent,
     },
     {
-      path: 'resend-confirmation-email',
+      path: 'confirmation-email-token',
       title: 'resend',
       component: ResendConfirmationEmailComponent
     },

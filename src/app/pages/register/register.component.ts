@@ -44,6 +44,8 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/home']);
         this.authService.registerAlertMessageSuccess.set(response.message);
         this.authService.moveRegisterAlert();
+        this.authService.isRegisterAlertVisible.set(false);  
+        this.authService.emailConfirmationToken.set(response.emailConfirmationToken)
       },
       error: (err) => {
         console.log(err.error.message);
