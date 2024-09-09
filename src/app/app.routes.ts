@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
+import { ResendConfirmationEmailComponent } from './pages/resend-confirmation-email/resend-confirmation-email.component';
 
 export const routes: Routes = [
     {
@@ -25,6 +26,11 @@ export const routes: Routes = [
       path: 'login',
       title: 'login',
         component: LoginComponent,
+    },
+    {
+      path: 'resend-confirmation-email',
+      title: 'resend',
+      component: ResendConfirmationEmailComponent
     },
     { path: '**', redirectTo: 'home'}
   ];

@@ -65,8 +65,8 @@ export class LoginComponent {
     const email = this.loginForm.value.email;
     this.authService.resendConfirmationEmail(this.loginForm.value.email).subscribe(
       response => console.log(response)
-      
     );
+
   }
 
 }

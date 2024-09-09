@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.storeService.getUser();
+    this.authService.isRegisterAlertVisible.set(false);  
+
   }
 
 }

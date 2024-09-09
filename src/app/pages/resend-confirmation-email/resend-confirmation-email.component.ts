@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-resend-confirmation-email',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
   templateUrl: './resend-confirmation-email.component.html',
   styleUrl: './resend-confirmation-email.component.css'
 })
-export class ResendConfirmationEmailComponent {
+export class ResendConfirmationEmailComponent implements OnInit {
+  authService: AuthService = inject(AuthService);
+
+  ngOnInit(): void {
+    this.authService.resendConfirmationEmail
+  }
+
 
 }

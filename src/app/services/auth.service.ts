@@ -29,6 +29,8 @@ isRegisterAlertVisible = signal<boolean>(false);
 
 isLoginAlertVisible = signal<boolean>(false);
 
+// isRegisterAlertVisibleTime = signal<number>(2000);
+// isRegisterAlertNotVisibleTime = signal<number>(15000);
 
 registerAlertMessageError = signal<string>('');
 registerAlertMessageSuccess = signal<string>('');
@@ -78,7 +80,7 @@ moveRegisterAlert() {
   },2000)
   setTimeout(() => {
     this.isRegisterAlertVisible.set(false);
-  },15000)
+  },1500)
 }
 
 moveLoginAlert() {
