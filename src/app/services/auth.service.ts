@@ -23,25 +23,16 @@ router: Router = inject(Router);
 
 accessToken = signal<string>('');
 
-emailConfirmationToken = signal<string>('');
-
 isLoggedIn = signal<boolean>(false);
+
+registerResponseSuccess = signal<RegisterResponse>({
+  message: 'fd',
+  email: ''
+});
 
 isRegisterAlertVisible = signal<boolean>(false);
 
-isLoginAlertVisible = signal<boolean>(false);
 
-// isRegisterAlertVisibleTime = signal<number>(2000);
-// isRegisterAlertNotVisibleTime = signal<number>(15000);
-
-registerAlertMessageError = signal<string>('');
-registerAlertMessageSuccess = signal<string>('');
-loginAlertError = signal<loginAlertError>({
-  statusCode: '',
-  error: '',
-  message: ''
-});
-loginAlertMessageSuccess = signal<string>('');
 
 
 // #register
@@ -71,28 +62,6 @@ resendConfirmationEmail(email?: string): Observable<ResendConfirmationEmail> {
 }
 
 
-// // #check email confirmation adress
-// checkEmailConfiramtion(): Observable<EmailConfirmation> {
-//   return this.http.get<EmailConfirmation>(`${enviorment.api}/mail)
-// }
-
-moveRegisterAlert() {
-  setTimeout(() => {
-    this.isRegisterAlertVisible.set(true);
-  },2000)
-  setTimeout(() => {
-    this.isRegisterAlertVisible.set(false);
-  },10000)
-}
-
-moveLoginAlert() {
-  setTimeout(() => {
-    this.isLoginAlertVisible.set(true);
-  },2000)
-  setTimeout(() => {
-    this.isLoginAlertVisible.set(false);
-  },5000)
-}
 
 
 

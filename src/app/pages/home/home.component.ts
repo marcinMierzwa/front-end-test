@@ -13,10 +13,8 @@ import { AlertComponent } from '../../components/alert/alert.component';
 })
 export class HomeComponent implements OnInit {
   private readonly storeService: StoreService = inject(StoreService);
-  private readonly authService: AuthService = inject(AuthService);
+  authService: AuthService = inject(AuthService);
 
-  isRegisterAlertVisible: Signal<boolean> = this.authService.isRegisterAlertVisible;
-  isLoginAlertVisible: Signal<boolean> = this.authService.isLoginAlertVisible;
 
   ngOnInit(): void {
     this.storeService.getUser();

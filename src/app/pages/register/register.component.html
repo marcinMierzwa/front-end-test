@@ -26,7 +26,7 @@
     [formGroup]="registerForm"
     (ngSubmit)="submit()"
     class="mx-auto mb-8 mt-8 max-w-md space-y-4">
-    =={{ registerForm.controls.email.errors | json }}==
+    <!-- =={{ registerForm.controls.email.errors | json }}== -->
       <div>
         <label for="email" class="sr-only">Email</label>
   
@@ -40,7 +40,7 @@
             maxlength="100"
             [class.invalid]="registerForm.controls.email.invalid && (registerForm.controls.email.touched || registerForm.controls.email.dirty)"
           />
-          @if (
+          <!-- @if (
             registerForm.controls.email.invalid && (registerForm.controls.email.touched || registerForm.controls.email.dirty)
           ) {
             @if (registerForm.controls.email.errors?.['required']) {
@@ -48,9 +48,9 @@
             }
             @if (registerForm.controls.email.errors?.['pattern']) {
               <small class="text-red-700">*Email must be an email</small>
-            }
+            } -->
 
-          }
+          <!-- } -->
           <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +85,7 @@
             [class.invalid]="registerForm.controls.password.invalid && (registerForm.controls.password.touched || registerForm.controls.password.dirty)"
             [type]="isPasswordVisible()?'text':'password'"
           />
-          @if (
+          <!-- @if (
             registerForm.controls.password.invalid && (registerForm.controls.password.touched || registerForm.controls.password.dirty)
           ) {
             @if (registerForm.controls.password.errors?.['required']) {
@@ -95,7 +95,7 @@
               <small class="text-red-700">*Password must contains minimum 6 characters ,one number and one uppercase letter</small>
             }
 
-          }
+          } -->
 
           <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
             <svg
@@ -138,14 +138,14 @@
             [type]="isPasswordVisible()?'text':'password'"
 
           />
-          @if (
+          <!-- @if (
             registerForm.controls.confirmPassword.invalid && (registerForm.controls.confirmPassword.touched || registerForm.controls.confirmPassword.dirty)
           ) {
             @if (registerForm.controls.confirmPassword.errors?.['required']) {
               <small class="text-red-700">*Confirm Password is a required field</small>
             }
           }
-
+ -->
           <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
             <svg
             (click)="tooglePasswordVisible()"
@@ -205,7 +205,6 @@
       <!-- [disabled]="registerForm.invalid" -->
 
 
-    @if (this.authService.registerAlertMessageError()) {
 
       <div class="w-2/3 mx-auto">
         <div
@@ -225,7 +224,6 @@
           />
         </svg>
       
-        <p class="ms-3 text-sm font-medium">{{ this.authService.registerAlertMessageError()}}</p>
       </div>
     
     
@@ -233,7 +231,6 @@
     </div>
     
       
-     }
     
   </div>
 

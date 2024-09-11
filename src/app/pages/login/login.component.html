@@ -112,7 +112,6 @@
       </form>
 
 <!-- ---------------- -->
- @if (this.authService.loginAlertError()) {
 
   <div class="w-2/3 mx-auto flex flex-col">
     <div
@@ -132,11 +131,9 @@
       />
     </svg>
   
-    <p class="ms-3 text-sm font-medium">{{ this.authService.loginAlertError().message }}</p>
   
 
   </div>
-  @if (this.authService.loginAlertError() && this.authService.loginAlertError().statusCode == '401') {
     <button
     type="button"
     (click)="resendConfirmationEmail()"
@@ -145,11 +142,11 @@
     Resend verification email
   </button>
 
-  }
+  
 
 </div>
 
   
- }
+ 
   </div>
   

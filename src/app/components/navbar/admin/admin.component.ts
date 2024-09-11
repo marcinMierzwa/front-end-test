@@ -31,7 +31,6 @@ export class AdminComponent implements OnInit {
   logout(): void {
     this.authService.logout().subscribe(() => {
       this.router.navigate(['/home']);
-      this.authService.isLoginAlertVisible.set(false);
     });
     this.authService.isLoggedIn.set(false);
   }

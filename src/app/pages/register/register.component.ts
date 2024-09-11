@@ -6,7 +6,6 @@ import { RegisterRequest } from '../../models/register-request';
 import { RegisterResponse } from '../../models/reqister-response';
 import { AlertComponent } from '../../components/alert/alert.component';
 import { JsonPipe } from '@angular/common';
-import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,17 +22,15 @@ export class RegisterComponent implements OnInit {
   formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
 
   registerForm = this.formBuilder.group({
-    email: this.formBuilder.control ('',{validators: [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]}),
-    password: this.formBuilder.control ('',{validators: [Validators.required, Validators.minLength(6), Validators.pattern(/(?=.*[A-Z])(?=.*\d)/) ]}),
-    confirmPassword: this.formBuilder.control ('',{validators: [Validators.required]}),
+    email: this.formBuilder.control (''),
+    password: this.formBuilder.control (''),
+    confirmPassword: this.formBuilder.control (''),
   });
-
-  isPasswordVisible = signal<boolean>(false);
+  isPasswordVisible = signal<boolean>(true);
   isButtonDisabled = true
 
 
   ngOnInit(): void {
-    this.authService.registerAlertMessageError.set('')
   }
 
   submit(): void {
@@ -42,14 +39,12 @@ export class RegisterComponent implements OnInit {
     .subscribe({
       next: (response: RegisterResponse) => {
         this.router.navigate(['/home']);
-        this.authService.registerAlertMessageSuccess.set(response.message);
-        this.authService.moveRegisterAlert();
-        this.authService.isRegisterAlertVisible.set(false);  
-        this.authService.emailConfirmationToken.set(response.emailConfirmationToken)
+        this.authService.isRegisterAlertVisible.set(true);
+        this.authService.registerResponseSuccess.set(response);
+        
       },
       error: (err) => {
         console.log(err.error.message);
-        this.authService.registerAlertMessageError.set(err.error.message);
       },
     });
   }
@@ -58,3 +53,8 @@ export class RegisterComponent implements OnInit {
     this.isPasswordVisible.set(!this.isPasswordVisible())
   }
 }
+
+
+// email: this.formBuilder.control ('',{validators: [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]}),
+// password: this.formBuilder.control ('',{validators: [Validators.required, Validators.minLength(6), Validators.pattern(/(?=.*[A-Z])(?=.*\d)/) ]}),
+// confirmPassword: this.formBuilder.control ('',{validators: [Validators.required]}),
