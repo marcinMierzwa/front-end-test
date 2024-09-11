@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { ResendConfirmationEmailComponent } from './pages/resend-confirmation-email/resend-confirmation-email.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
     {
@@ -28,9 +28,9 @@ export const routes: Routes = [
         component: LoginComponent,
     },
     {
-      path: 'confirmation-email-token',
-      title: 'resend',
-      component: ResendConfirmationEmailComponent
+      path: 'forgot-password',
+      title: 'forgot-password',
+      component: ForgotPasswordComponent
     },
     { path: '**', redirectTo: 'home'}
   ];
