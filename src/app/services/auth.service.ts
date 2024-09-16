@@ -8,8 +8,8 @@ import { LoginRequest } from '../models/login-request';
 import { LoginResponse } from '../models/login-response';
 import { LogoutResponse } from '../models/logout-response';
 import { Router } from '@angular/router';
-import { loginAlertError } from '../models/login-alert-error';
 import { ResendConfirmationEmail } from '../models/resend-confirmation-email';
+import { ForgotPasswordResponse } from '../models/forgot-password-response';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +59,11 @@ refresh(): Observable<LoginResponse> {
 // #resend confirmation email
 resendConfirmationEmail(email?: string): Observable<ResendConfirmationEmail> {
   return this.http.post<ResendConfirmationEmail>(`${enviorment.api}mail/resend-confirmation-email`, {email});
+}
+
+// #forgot email
+forgotPassword(email: string): Observable<ForgotPasswordResponse> {
+  return this.http.post<ForgotPasswordResponse>(`${enviorment.api}forgot-password`, email )
 }
 
 
