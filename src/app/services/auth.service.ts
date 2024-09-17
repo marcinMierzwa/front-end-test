@@ -63,7 +63,7 @@ resendConfirmationEmail(email?: string): Observable<ResendConfirmationEmail> {
 
 // #forgot email
 forgotPassword(email: string): Observable<ForgotPasswordResponse> {
-  return this.http.post<ForgotPasswordResponse>(`${enviorment.api}auth/forgot-password`, {email} )
+  return this.http.post<ForgotPasswordResponse>(`${enviorment.api}reset/forgot-password`, {email} )
 }
 
 
