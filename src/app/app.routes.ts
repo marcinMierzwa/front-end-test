@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 export const routes: Routes = [
     {
@@ -32,6 +33,12 @@ export const routes: Routes = [
       title: 'forgot-password',
       component: ForgotPasswordComponent
     },
+    {
+      path: 'reset-password',
+      title: 'reset-password',
+      component: ResetPasswordComponent
+    },
+
     { path: '**', redirectTo: 'home'}
   ];
   
