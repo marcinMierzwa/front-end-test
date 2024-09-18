@@ -1,7 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-reset-password',
@@ -10,18 +12,27 @@ import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.css'
 })
-export class ResetPasswordComponent {
+export class ResetPasswordComponent implements OnInit{
 
-  authService: AuthService = inject(AuthService);
+  private authService: AuthService = inject(AuthService);
 
-  router:Router = inject(Router);
+  private router:Router = inject(Router);
+
+  private route:ActivatedRoute = inject(ActivatedRoute);
 
   formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
 
   resetForm = this.formBuilder.group({
     newPassword: [''],
     confirmNewPassword: ['']
-  })
+  });
+
+  resetToken = toSignal(this.route.queryParamMap
+    .pipe(
+      map(params => params.get('token'))
+    ),{initialValue:null});
+   
+  ngOnInit(): void {}
 
   submit() {
 
