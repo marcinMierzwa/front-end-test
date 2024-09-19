@@ -10,64 +10,86 @@ import { LogoutResponse } from '../models/logout-response';
 import { Router } from '@angular/router';
 import { ResendConfirmationEmail } from '../models/resend-confirmation-email';
 import { ForgotPasswordResponse } from '../models/forgot-password-response';
+import { ResetPasswordResponse } from '../models/reset-password-response';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  http: HttpClient = inject(HttpClient);
 
+  router: Router = inject(Router);
 
-http: HttpClient = inject(HttpClient);
+  accessToken = signal<string>('');
 
-router: Router = inject(Router);
+  isLoggedIn = signal<boolean>(false);
 
-accessToken = signal<string>('');
+  registerResponseSuccess = signal<RegisterResponse>({
+    message: 'fd',
+    email: '',
+  });
 
-isLoggedIn = signal<boolean>(false);
+  isRegisterAlertVisible = signal<boolean>(false);
 
-registerResponseSuccess = signal<RegisterResponse>({
-  message: 'fd',
-  email: ''
-});
+  // #register
+  register(registerRequest: RegisterRequest): Observable<RegisterResponse> {
+    return this.http.post<RegisterResponse>(
+      `${enviorment.api}auth/register`,
+      registerRequest
+    );
+  }
 
-isRegisterAlertVisible = signal<boolean>(false);
+  // #login
+  login(loginRequest: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(
+      `${enviorment.api}auth/login`,
+      loginRequest,
+      { withCredentials: true }
+    );
+  }
 
+  // #logout
+  logout(): Observable<LogoutResponse> {
+    return this.http.post<LogoutResponse>(
+      `${enviorment.api}auth/logout`,
+      {},
+      { withCredentials: true }
+    );
+  }
 
+  // #refresh
+  refresh(): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(
+      `${enviorment.api}auth/refresh`,
+      {},
+      { withCredentials: true }
+    );
+  }
 
+  // #resend confirmation email
+  resendConfirmationEmail(email?: string): Observable<ResendConfirmationEmail> {
+    return this.http.post<ResendConfirmationEmail>(
+      `${enviorment.api}mail/resend-confirmation-email`,
+      { email }
+    );
+  }
 
-// #register
-register(registerRequest: RegisterRequest): Observable<RegisterResponse> {
- return this.http.post<RegisterResponse>(`${enviorment.api}auth/register`, registerRequest)
-}
+  // #forgot email
+  forgotPassword(email: string): Observable<ForgotPasswordResponse> {
+    return this.http.post<ForgotPasswordResponse>(
+      `${enviorment.api}reset/forgot-password`,
+      { email }
+    );
+  }
 
-// #login
-login(loginRequest: LoginRequest): Observable<LoginResponse> {
-  return this.http.post<LoginResponse>(`${enviorment.api}auth/login`, loginRequest, {withCredentials: true})
-  
-}
-
-// #logout
-logout(): Observable<LogoutResponse> {
-  return this.http.post<LogoutResponse>(`${enviorment.api}auth/logout`, {}, {withCredentials: true})
-}
-
-// #refresh
-refresh(): Observable<LoginResponse> {
-  return this.http.post<LoginResponse>(`${enviorment.api}auth/refresh`, {}, {withCredentials: true})
-}
-
-// #resend confirmation email
-resendConfirmationEmail(email?: string): Observable<ResendConfirmationEmail> {
-  return this.http.post<ResendConfirmationEmail>(`${enviorment.api}mail/resend-confirmation-email`, {email});
-}
-
-// #forgot email
-forgotPassword(email: string): Observable<ForgotPasswordResponse> {
-  return this.http.post<ForgotPasswordResponse>(`${enviorment.api}reset/forgot-password`, {email} )
-}
-
-
-
-
-
+  // #reset password
+  resetPassword(
+    newPassword: string,
+    resetToken: string
+  ): Observable<ResetPasswordResponse> {
+    return this.http.put<ResetPasswordResponse>(
+      `${enviorment.api}reset/reset-password`,
+      { newPassword, resetToken }
+    );
+  }
 }
