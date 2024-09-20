@@ -43,6 +43,7 @@ export class ResetPasswordComponent implements OnInit{
       },
       error: (err) => {
         alert(err.error.message);
+        this.router.navigate(['/forgot-password']);
       }
     });
     
