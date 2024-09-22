@@ -21,11 +21,15 @@ export class AlertComponent implements OnInit {
   }
 
   resendEmail() {
+    const email = this.authService.registerResponseSuccess().email;
+    const emailConfirmationToken = this.authService.registerResponseSuccess().emailConfirmationToken;
+
     this.authService
-      .resendConfirmationEmail(this.authService.registerResponseSuccess().email)
+      .resendConfirmationEmail(email, emailConfirmationToken)
       .subscribe({
         next: (res: ResendConfirmationEmail) => {
-          this.router.navigate(['/login']);
+          alert(res.message)
+          // this.router.navigate(['/login']);
         },
         error: (err: any) => {
           console.log(err);

@@ -68,10 +68,10 @@ export class AuthService {
   }
 
   // #resend confirmation email
-  resendConfirmationEmail(email?: string): Observable<ResendConfirmationEmail> {
+  resendConfirmationEmail(email?: string, emailConfirmationToken?: string): Observable<ResendConfirmationEmail> {
     return this.http.post<ResendConfirmationEmail>(
-      `${enviorment.api}mail/resend-confirmation-email`,
-      { email }
+      `${enviorment.api}confirm/resend-confirmation-email`,
+      { email, emailConfirmationToken }
     );
   }
 
