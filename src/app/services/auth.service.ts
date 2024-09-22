@@ -25,8 +25,9 @@ export class AuthService {
   isLoggedIn = signal<boolean>(false);
 
   registerResponseSuccess = signal<RegisterResponse>({
-    message: 'fd',
-    email: '',
+    message: '',
+    emailConfirmationToken: '',
+    email: ''
   });
 
   isRegisterAlertVisible = signal<boolean>(false);
