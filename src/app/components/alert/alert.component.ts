@@ -29,7 +29,7 @@ export class AlertComponent implements OnInit {
       .subscribe({
         next: (res: ResendConfirmationEmail) => {
           alert(res.message)
-          // this.router.navigate(['/login']);
+          this.router.navigate(['/login']);
         },
         error: (err: any) => {
           console.log(err);

@@ -9,12 +9,12 @@ import { initFlowbite } from 'flowbite';
 import { AuthService } from '../../../services/auth.service';
 import { StoreService } from '../../../services/store.service';
 import { User } from '../../../models/user';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
 })

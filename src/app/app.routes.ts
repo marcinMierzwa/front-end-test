@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 export const routes: Routes = [
     {
@@ -30,14 +31,20 @@ export const routes: Routes = [
     },
     {
       path: 'forgot-password',
-      title: 'forgot-password',
+      title: 'forgot password',
       component: ForgotPasswordComponent
     },
     {
       path: 'reset-password',
-      title: 'reset-password',
+      title: 'reset password',
       component: ResetPasswordComponent
     },
+    {
+      path: 'change-password',
+      title: 'change password',
+      component: ChangePasswordComponent
+    },
+
 
     { path: '**', redirectTo: 'home'}
   ];

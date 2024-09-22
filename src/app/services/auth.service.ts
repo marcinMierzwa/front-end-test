@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { ResendConfirmationEmail } from '../models/resend-confirmation-email';
 import { ForgotPasswordResponse } from '../models/forgot-password-response';
 import { ResetPasswordResponse } from '../models/reset-password-response';
+import { ChangePasswordResponse } from '../models/change-password-response';
+import { ChangePasswordRequest } from '../models/change-password-request';
 
 @Injectable({
   providedIn: 'root',
@@ -92,5 +94,10 @@ export class AuthService {
       `${enviorment.api}reset/reset-password`,
       { newPassword, resetToken }
     );
+  }
+
+  // #change password
+  changePassword(formData: ChangePasswordRequest): Observable<ChangePasswordResponse> {
+    return this.http.put<ChangePasswordResponse>(`${enviorment.api}reset/change-password`, formData)
   }
 }
