@@ -25,12 +25,10 @@ submit(): void{
   const changeFormData: ChangePasswordRequest = this.changeForm.getRawValue();
   this.authService.changePassword(changeFormData).subscribe({
     next: (res: ChangePasswordResponse) => {
-      console.log(res);
-      
+      alert(res.message);
     },
     error: (err) => {
-      console.log(err.error.message);
-      
+      alert(err.error.message);
     }
   })
 }
