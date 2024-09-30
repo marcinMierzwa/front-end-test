@@ -13,6 +13,7 @@ import { ForgotPasswordResponse } from '../models/forgot-password-response';
 import { ResetPasswordResponse } from '../models/reset-password-response';
 import { ChangePasswordResponse } from '../models/change-password-response';
 import { ChangePasswordRequest } from '../models/change-password-request';
+import { GoogleLoginResponse } from '../models/google-login-response';
 
 @Injectable({
   providedIn: 'root',
@@ -100,4 +101,9 @@ export class AuthService {
   changePassword(formData: ChangePasswordRequest): Observable<ChangePasswordResponse> {
     return this.http.put<ChangePasswordResponse>(`${enviorment.api}reset/change-password`, formData)
   }
+
+//   // #google login
+//   googleLogin(){
+//    window.location.href = 'http://localhost:3000/auth/google/login'
+// }
 }

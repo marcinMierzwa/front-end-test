@@ -55,4 +55,8 @@ export class LoginComponent {
       error: (err) => alert(err.message),
     });
   }
+
+  googleLogin(): void {
+    window.location.href = 'http://localhost:3000/auth/google/login'
+  }
 }
